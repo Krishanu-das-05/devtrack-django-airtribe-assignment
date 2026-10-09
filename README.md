@@ -27,7 +27,7 @@ The API is then available at `http://127.0.0.1:8000/api/`.
 | GET | `/api/issues/?id=1` | Get one issue, or 404 if it doesn't exist |
 | GET | `/api/issues/?status=open` | List only issues with the given status |
 
-Errors are returned as JSON: `{"error": "..."}`.
+Errors are returned as JSON: `{"error": "..."}`. POSTing an id that already exists returns 400.
 
 ### Example: create an issue
 
