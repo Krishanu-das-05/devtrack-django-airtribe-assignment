@@ -44,8 +44,10 @@ def create_reporter(request):
     except ValueError as e:
         return JsonResponse({"error": str(e)}, status=400)
 
-    # 4. Load the list, add the new one, save the list.
+    # 4. Load the list, reject duplicate ids, add the new one, save the list.
     records = read_records(REPORTERS_FILE)
+    if any(str(record["id"]) == str(reporter.id) for record in records):
+        return JsonResponse({"error": "Reporter with this id already exists"}, status=400)
     records.append(reporter.to_dict())
     write_records(REPORTERS_FILE, records)
 
@@ -112,8 +114,10 @@ def create_issue(request):
     except ValueError as e:
         return JsonResponse({"error": str(e)}, status=400)
 
-    # 4. Load the list, add the new one, save the list (without the message).
+    # 4. Load the list, reject duplicate ids, add the new one, save the list (without the message).
     records = read_records(ISSUES_FILE)
+    if any(str(record["id"]) == str(issue.id) for record in records):
+        return JsonResponse({"error": "Issue with this id already exists"}, status=400)
     records.append(issue.to_dict())
     write_records(ISSUES_FILE, records)
 

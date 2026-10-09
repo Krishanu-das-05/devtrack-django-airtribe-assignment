@@ -5,7 +5,7 @@ def read_records(filename):
     try:
         with open(filename, "r") as f:
             return json.load(f)
-    except FileNotFoundError:
+    except (FileNotFoundError, json.JSONDecodeError):
         return []
 
 

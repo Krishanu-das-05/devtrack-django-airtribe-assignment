@@ -38,13 +38,13 @@ class Issue(BaseEntity):
         self.status = status
         self.priority = priority
         self.reporter_id = reporter_id
-        self.created_at = str(datetime.now())
+        self.created_at = datetime.now().isoformat()
 
     def validate(self):
         if not self.title:
             raise ValueError('Title cannot be empty')
         if self.status not in Issue.VALID_STATUSES:
-               raise ValueError(f"Invalid status. Must be one of: {sorted(Issue.VALID_STATUSES)}")
+            raise ValueError(f"Invalid status. Must be one of: {sorted(Issue.VALID_STATUSES)}")
         if self.priority not in Issue.VALID_PRIORITIES:
             raise ValueError('Invalid priority')
 
