@@ -88,4 +88,6 @@ endpoint needs its own check for that.
 ![Create reporter: 201 Created](screenshots/create-reporter-201.png)
 ![Get all reporters: 200 OK](screenshots/get-all-reporters-200.png)
 ![Get reporter by id: 200 OK](screenshots/get-reporter-by-id-200.png)
+![Create critical issue: 201 Created with URGENT message](screenshots/create-issue-201.png)
 ![Reporter not found: 404](screenshots/reporter-not-found-404.png)
+![Empty title: 400 Bad Request](screenshots/empty-title-400.png)
